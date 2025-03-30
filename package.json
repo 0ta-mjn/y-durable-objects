@@ -1,7 +1,7 @@
 {
 	"name": "@mininjin/y-durable-objects",
 	"description": "Cloudflare Workers Durable Objects for Yjs",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"files": [
@@ -32,7 +32,7 @@
 	"scripts": {
 		"typecheck": "tsc --noEmit",
 		"build": "rm -rf ./dist && rollup -c",
-		"publish:alpha": "npm publish --access=public --tag=alpha",
+		"publish:alpha": "yarn build && npm publish --access=public --tag=alpha",
 		"test": "vitest"
 	},
 	"workspaces": [
