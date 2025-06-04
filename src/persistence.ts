@@ -141,13 +141,15 @@ const flushDocument = async (
  * @description merge updates into chunks.
  */
 const mergeUpdatesToChunk = (
-	[...updates]: Uint8Array[],
-	current?: Uint8Array,
-	maxChunkBytes = DEFAULT_CHUNK_MAX_BYTES
+        [...updates]: Uint8Array[],
+        current?: Uint8Array,
+        maxChunkBytes = DEFAULT_CHUNK_MAX_BYTES
 ): Uint8Array[] => {
-	if (updates.length === 0) return current ? [current] : [];
+        if (updates.length === 0) return current ? [current] : [];
 
-	current = current || updates[0];
+        if (!current) {
+                current = updates.shift()!;
+        }
 
 	const chunks: Uint8Array[] = [];
 	while (updates.length > 0) {
